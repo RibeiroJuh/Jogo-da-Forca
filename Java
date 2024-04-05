@@ -41,4 +41,8 @@ public class JogoDaForca {
 
         if (palavraRevelada) {
             System.out.println("\nParabéns, você ganhou! A palavra era: " + palavra);
-       
+        } else {
+            System.out.println("\nVocê perdeu! A palavra era: " + palavra);
+        }
+    }
+}
