@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jogo da Forca</title>
+    <style>
+     
+    </style>
+</head>
+<body>
+    <h2>Jogo da Forca</h2>
+    <p id="palavra"></p>
+    <input type="text" id="letra">
+    <button onclick="checarLetra()">Verificar</button>
+    <p id="resultado"></p>
+
+    <script>
+        var palavra = "javascript";
+        var letrasCorretas = [];
+        var letrasIncorretas = [];
+
+        function exibirPalavra() {
+            var palavraExibida = "";
+            for (var i = 0; i < palavra.length; i++) {
+                if (letrasCorretas.includes(palavra[i])) {
+                    palavraExibida += palavra[i];
+                } else {
+                    palavraExibida += "_";
+                }
+            }
+            document.getElementById("palavra").textContent = palavraExibida;
+        }
+
+        function checarLetra() {
+            var letra = document.getElementById("letra").value;
+            if (palavra.includes(letra)) {
+                if (!letrasCorretas.includes(letra)) {
+                    letrasCorretas.push(letra);
+                    exibirPalavra();
+                }
+            } else {
+                if (!letrasIncorretas.includes(letra)) {
+                    letrasIncorretas.push(letra);
+                    document.getElementById("resultado").textContent = "Letras Incorretas: " + letrasIncorretas.join(", ");
+                }
+            }
+            document.getElementById("letra").value = "";
+        }
+
+        exibirPalavra();
+    </script>
+</body>
+</html>
