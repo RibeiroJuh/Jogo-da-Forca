@@ -1,0 +1,28 @@
+def jogo_da_forca():
+    palavra = "javascript"
+    palavra_exibida = ["_" for _ in palavra]
+    tentativas = 6
+    letras_incorretas = []
+
+    while tentativas > 0 and '_' in palavra_exibida:
+        print("\nPalavra:", ' '.join(palavra_exibida))
+        print("Tentativas restantes:", tentativas)
+        letra = input("Digite uma letra: ")
+
+        if letra in palavra:
+            for i in range(len(palavra)):
+                if palavra[i] == letra:
+                    palavra_exibida[i] = letra
+        else:
+            if letra not in letras_incorretas:
+                letras_incorretas.append(letra)
+                print("Letras incorretas:", ', '.join(letras_incorretas))
+            tentativas -= 1
+            print("Letra incorreta! Tentativas restantes:", tentativas)
+
+    if '_' not in palavra_exibida:
+        print("\nParabéns, você ganhou! A palavra era:", palavra)
+    else:
+        print("\nVocê perdeu! A palavra era:", palavra)
+
+jogo_da_forca()
