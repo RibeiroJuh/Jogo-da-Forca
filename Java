@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class JogoDaForca {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String palavra = "javascript";
+        char[] palavraArray = palavra.toCharArray();
+        char[] palavraExibida = new char[palavra.length()];
+
+        for (int i = 0; i < palavraExibida.length; i++) {
+            palavraExibida[i] = '_';
+        }
+
+        int tentativas = 6;
+        boolean palavraRevelada = false;
+
+        while (tentativas > 0 && !palavraRevelada) {
+            System.out.println("\nPalavra: " + String.valueOf(palavraExibida));
+            System.out.println("Tentativas restantes: " + tentativas);
+            System.out.print("Digite uma letra: ");
+            char letra = scanner.next().charAt(0);
+
+            boolean letraCorreta = false;
+
+            for (int i = 0; i < palavraArray.length; i++) {
+                if (palavraArray[i] == letra) {
+                    palavraExibida[i] = letra;
+                    letraCorreta = true;
+                }
+            }
+
+            if (!letraCorreta) {
+                tentativas--;
+                System.out.println("Letra incorreta! Tentativas restantes: " + tentativas);
+            }
+
+            if (String.valueOf(palavraExibida).equals(palavra)) {
+                palavraRevelada = true;
+            }
+        }
+
+        if (palavraRevelada) {
+            System.out.println("\nParabéns, você ganhou! A palavra era: " + palavra);
+       
